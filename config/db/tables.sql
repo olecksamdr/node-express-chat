@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS `users`
+(
+	`user_id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT, -- max unsigned int = 4294967295
+	`full_name` VARCHAR(80) NOT NULL,
+	`email` VARCHAR(120) NOT NULL,
+	PRIMARY KEY(`user_id`)
+)
