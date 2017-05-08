@@ -4,6 +4,8 @@
  * Module dependencies.
  */
 
+var path = require('path');
+
 var app = require('../app');
 var debug = require('debug')('chat-with-express:server');
 var http = require('http');
@@ -20,6 +22,12 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+
+/**
+ * config socket js to make a chat
+ */
+
+require(path.join(__dirname, '..', 'chat.js'))(server);
 
 /**
  * Listen on provided port, on all network interfaces.

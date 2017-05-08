@@ -1,10 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>chat</title>
+
 	<meta charset="UTF-8">
-	<title>Its work ?</title>
+
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/vendor/simple-scrollbar.css">
+
+	<script src="js/chat.js"></script>
+	<script src="js/simpleScrollbar.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js">
+
+	</script>
 </head>
 <body>
-	<h1>hello</h1>
+	<div class="container">
+		<section id="chat-window" class="draggable">
+			<div class="drag-control"></div>
+			<div class="messages-list" data-simple-scrollbar>
+
+				<!-- <div class="message incoming">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, labore.</p>
+				</div>
+
+				<div class="message outcoming">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, obcaecati.</p>
+				</div>
+
+				<div class="message incoming">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, labore.</p>
+				</div>
+
+				<div class="message outcoming">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, obcaecati.</p>
+				</div>
+
+				<div class="message incoming">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, labore.</p>
+				</div>
+
+				<div class="message outcoming">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, obcaecati.</p>
+				</div> -->
+
+			</div>
+
+			<div class="send-input" data-simple-scrollbar>
+				Введіть ваше повідомлення ...
+			</div>
+			<button class="send-btn"></button>
+		</section>
+	</div>
+
+	<script src="js/chatWindow.js"></script>
+	<script type="text/javascript">
+		var sock = new SockJS('http://localhost:3000/chat');
+
+		// On receive message from server
+		sock.onmessage = function(e) {
+		  // Get the content
+		  var content = JSON.parse(e.data);
+
+		  // Append the text to text area (using jQuery)
+			var messagesCnt = document.querySelector('.messages-list .ss-content');
+
+			var message = document.createElement('div');
+			var p = document.createElement('p');
+
+			message.classList.add('message', 'incoming');
+
+			p.innerHTML = content;
+			message.appendChild(p);
+
+			messagesCnt.appendChild(message);
+		};
+
+		// Function for sending the message to server
+		function sendMessage(){
+			var sendInput = document.querySelector('.send-input .ss-content');
+			var message = JSON.stringify(sendInput.textContent);
+
+		  // Send it now
+		  sock.send(message);
+		}
+
+		var sendBtn = document.querySelector('button.send-btn');
+		sendBtn.onclick = sendMessage;
+	</script>
 </body>
 </html>
