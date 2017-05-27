@@ -26,7 +26,10 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 
 // view engine setup
-app.engine('.hbs', hbs({extname: '.hbs'}));
+app.engine('.hbs', hbs({
+  extname: '.hbs',
+  partialsDir: __dirname + '/views/partials'
+}));
 app.set('view engine', '.hbs');
 
 // uncomment after placing your favicon in /public
