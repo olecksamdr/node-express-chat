@@ -1,6 +1,6 @@
 //const local = require('./passport/local');
 const google = require('./google.js');
-//const facebook = require('./passport/facebok');
+const facebook = require('./facebook.js');
 
 const db = require('../db.js');
 const User = require('../../models/User.js');
@@ -13,9 +13,6 @@ module.exports = function (passport) {
 
   // serialize and deserialize sessions
   passport.serializeUser((user, done) => {
-    console.log('SERIALIZE USER')
-    console.log(user);
-    console.log('SERIALIZE USER')
     done(null, user.user_id);
   });
 
@@ -28,5 +25,5 @@ module.exports = function (passport) {
   // use these strategies
   //  passport.use(local);
   passport.use('google', google);
-  // passport.use(facebook);
+  passport.use('facebook', facebook);
 };

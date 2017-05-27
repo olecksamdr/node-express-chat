@@ -17,5 +17,17 @@ module.exports = (app, passport) => {
     failureRedirect: '/login-methods'
   }));
 
-}
+  // == FACEBOOK
 
+  app.get('/auth/facebook', passport.authenticate('facebook', {scope: config.facebook.scope}));
+  app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+    successRedirect: '/',
+    failureRedirect: '/login-methods'
+  }));
+
+  app.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/login-methods');
+  });
+
+}

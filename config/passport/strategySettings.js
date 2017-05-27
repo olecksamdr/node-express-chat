@@ -5,13 +5,12 @@
 
 module.exports = {
   facebook: {
-    clientID: 'APP_ID',
-    clientSecret: 'SECRET',
+    clientID: '1878345289076980',
+    clientSecret: '89b0b82bfc47f35f5986c078287c8b25',
     callbackURL: 'http://localhost:3000/auth/facebook/callback',
     scope: [
-      'email',
-      'user_about_me',
-      'user_friends'
+      'public_profile',
+      'email'
     ]
   },
   google: {
