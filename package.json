@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "./node_modules/.bin/mocha"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.16.0",
     "bookshelf": "^0.10.3",
     "cookie-parser": "~1.4.3",
@@ -13,10 +15,19 @@
     "debug": "~2.6.0",
     "express": "~4.14.1",
     "express-handlebars": "^3.0.0",
+    "express-mysql-session": "^1.2.0",
     "knex": "^0.13.0",
     "morgan": "~1.7.0",
     "mysql": "^2.13.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth20": "^1.0.0",
+    "passport-local": "^1.0.0",
     "serve-favicon": "~2.3.2",
     "sockjs": "^0.3.18"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.4.1"
   }
 }

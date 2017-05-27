@@ -1,18 +1,18 @@
 CREATE TABLE IF NOT EXISTS `users`
 (
-	`user_id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT, -- max unsigned int = 4294967295
+	`user_id` INTEGER NOT NULL AUTO_INCREMENT, -- max unsigned int = 4294967295
 	`first_name` VARCHAR(80) NOT NULL,
 	`last_name`VARCHAR(80) NOT NULL,
 	`email` VARCHAR(120) NOT NULL,
-	`login_method`
 	PRIMARY KEY(`user_id`)
 );
 
 CREATE TABLE IF NOT EXISTS `auth_provider` (
-	`provider_key` varchar(128) NOT NULL,
+  `provider_id` INTEGER NOT NULL AUTO_INCREMENT,
+	`hash` varchar(128) NOT NULL, -- in local auth it will be password
 	`user_id` INTEGER UNSIGNED NOT NULL,
 	`provider_type` enum('facebook','google', 'local', 'vk') NOT NULL,
-	PRIMARY KEY  (`ProviderKey`)
+	PRIMARY KEY  (`provider_id`)
 );
 
 

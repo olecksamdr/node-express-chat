@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
+module.exports = (app, passport) => {
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+  app.get('/', (req, res) => res.render('index.hbs'));
+  
+  // local login, google, facebook routes
+  require('./login.js')(app, passport);
+}
 
-module.exports = router;
+
